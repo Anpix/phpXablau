@@ -20,8 +20,7 @@ class Controller {
     public function loadModel($name) {
         
         $model_name = $name . 'Model';
-
-        require_once APP . 'core/model.php';
+        
         require_once APP . 'model/' . strtolower($name) . '.php';
         
         return new $model_name($this->db);
