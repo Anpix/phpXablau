@@ -17,13 +17,15 @@ class Controller {
         
     }
 
-    public function loadModel($name) {
+    public function load($name, $type = 'Model') {
         
-        $model_name = $name . 'Model';
+        $type = ($type == 'Controller') ? 'Controller' : 'Model';
         
         require_once APP . 'model/' . strtolower($name) . '.php';
         
-        return new $model_name($this->db);
+        $instance = ($type == 'Model') ? $name . 'Model' : $name;
+        
+        return new $instance($this->db);
 
     }
     

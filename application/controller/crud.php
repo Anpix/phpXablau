@@ -5,7 +5,7 @@ class Crud extends Controller {
     public function index() {
         
         # LOAD ONLY MODELS THAT YOU NEED
-        $crud = $this->loadModel('Crud');
+        $crud = $this->load('Crud');
         
         # READ
         $thing = $crud->read(1);
@@ -26,7 +26,7 @@ class Crud extends Controller {
             }
             
             # UPDATE
-            $this->loadModel('Crud')->update($id, $updateTo);
+            $this->load('Crud')->update($id, $updateTo);
             
         }
         
@@ -37,7 +37,7 @@ class Crud extends Controller {
     public function remove($id) {
         
         if (isset($id)) {
-            $this->loadModel('Crud')->delete($id);
+            $this->load('Crud')->delete($id);
         }
         
         header('Location: ' . URL . 'crud');
@@ -51,7 +51,7 @@ class Crud extends Controller {
         }
         
         // that can be a POST
-        $this->loadModel('Crud')->create($what);
+        $this->load('Crud')->create($what);
         
         header('Location: ' . URL . 'crud');
         
